@@ -14,3 +14,6 @@ class Task {
       this.isComplete = true;
     }
   }
+
+  export { Task };
+  
