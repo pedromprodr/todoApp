@@ -19,6 +19,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     padding-right: 13%;
+    box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .projectNav{
     display: flex;
@@ -74,6 +75,7 @@ li{
     min-width: 90%;
     max-width: 90%;
     border-radius: 5px;
+    box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .taskName{
     font-size: 1.15rem;
