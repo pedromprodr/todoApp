@@ -74,22 +74,29 @@ function loadAllTasks(){
         const taskElement = document.createElement('div');
         taskElement.className = 'task';
 
+        taskElement.addEventListener('click', () => {
+            projects.forEach(projecti => { projecti.tasks.forEach(taski => {if(taski.name===task.name){taski.markAsComplete();loadAllTasks();}});})
+        })
+
         const name = document.createElement('li');
+        name.classList.add("taskName");
         name.textContent = task.name;
         taskElement.appendChild(name);
 
         const description = document.createElement('li');
         description.textContent = task.description;
+        description.classList.add("taskDescription");
         taskElement.appendChild(description);
 
         const dueDate = document.createElement('li');
         dueDate.textContent = task.dueDate;
+        dueDate.classList.add("taskDueDate");
         taskElement.appendChild(dueDate);
 
-        const isComplete = document.createElement('li');
-        if(isComplete) taskElement.classList.add('completedTask')
-        isComplete.textContent = task.isComplete;
-        taskElement.appendChild(isComplete);
+        //const isComplete = document.createElement('li');
+        if(task.isComplete) taskElement.classList.add('completedTask')
+        //isComplete.textContent = task.isComplete;
+        //taskElement.appendChild(isComplete);
 
         projectContainer.appendChild(taskElement);
     });
@@ -111,23 +118,30 @@ function loadProject(title) {
             project.tasks.forEach(task => {
                 const taskElement = document.createElement('div');
                 taskElement.className = 'task';
+                
+                taskElement.addEventListener('click', () => {
+                    projects.forEach(project => { project.tasks.forEach(taski => {if(taski.name===task.name){taski.markAsComplete();loadProject(title)}});})
+                })
 
                 const name = document.createElement('li');
                 name.textContent = task.name;
+                name.classList.add("taskName");
                 taskElement.appendChild(name);
 
                 const description = document.createElement('li');
                 description.textContent = task.description;
+                description.classList.add("taskDescription");
                 taskElement.appendChild(description);
 
                 const dueDate = document.createElement('li');
                 dueDate.textContent = task.dueDate;
+                dueDate.classList.add("taskDueDate")
                 taskElement.appendChild(dueDate);
 
-                const isComplete = document.createElement('li');
-                if(isComplete) taskElement.classList.add('completedTask')
-                isComplete.textContent = task.isComplete;
-                taskElement.appendChild(isComplete);
+                //const isComplete = document.createElement('li');
+                if(task.isComplete) taskElement.classList.add('completedTask')
+                //isComplete.textContent = task.isComplete;
+                //taskElement.appendChild(isComplete);
 
                 projectContainer.appendChild(taskElement);
             });
@@ -145,6 +159,7 @@ function loadSampleProjects() {
 
     project = new Project('Groceries');
     task1 = new Task('Buy Milk','','','09/01/2022','urgent');
+    task1.markAsComplete();
     task2 = new Task('Buy toilet paper','','','09/01/2022','normal');
     task3 = new Task('Buy cleaning products','','','09/01/2022','normal');
     project.tasks.push(task1,task2,task3);

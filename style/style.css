@@ -1,12 +1,11 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 body{
     max-width: 100%;
+    font-size: 100%;
     max-height: 100%;
-    background-color:#393E46;
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     background-color: #2E3136;
@@ -52,11 +51,12 @@ body{
 .projectContainer{
     align-items: center;
     margin: 20px;
-    max-width: 75%;
+    max-width: 100%;
     height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-content: center;
+    gap: 1%;
 }
 li{
     text-decoration: none;
@@ -64,11 +64,66 @@ li{
 }
 .task{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin: 15px;
     background-color: #FFFFFF;
     min-height: 100px;
     max-height: 100px;
-    min-width: 20%;
-    max-width: 20%;
+    min-width: 90%;
+    max-width: 90%;
     border-radius: 5px;
 }
+.taskName{
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+.taskName{
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+.completedTask{
+    text-decoration:line-through;
+}
+
+@media only screen and (max-width: 800px)  {
+    .logo{
+        color: #43B581;
+        height: 50px;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+    .title{
+        font-size: 20px;
+
+        font-weight: bold;
+    }
+    .subtitle{
+        font-size: 9px;
+        font-weight:lighter;
+    }
+    .header{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .projectContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .projectNav{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: #43B581;
+        align-items: center;
+        cursor: pointer;
+    }
+  }
