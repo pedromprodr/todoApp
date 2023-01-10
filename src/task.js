@@ -13,7 +13,16 @@ class Task {
     markAsComplete() {
       this.isComplete = true;
     }
+    
   }
-
-  export { Task };
+  function compare( a, b ) {
+    if ( a.priority === 'urgent' && b.priority === 'normal' ){
+      return -1;
+    }
+    if ( a.priority === 'normal' && b.priority === 'urgent' ){
+      return 1;
+    }
+    return 0;
+  }
+  export { Task , compare };
   

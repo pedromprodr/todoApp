@@ -1,8 +1,5 @@
 import { Task } from './task.js';
 
-const project = [];
-const task = new Task('Teste 1','12-01-2023','Teste descricao','12-01-2023','Important');
-project.push(task);
 
 class Project {
   constructor(name, tasks = []) {
@@ -25,6 +22,8 @@ class Project {
     console.log(`Tasks for project ${this.name}:`);
     this.tasks.forEach(task => console.log(task));
   }
+
+  
 }
 
 
