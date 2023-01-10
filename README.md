@@ -1,15 +1,3 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 to-do list
 
-This project has been created using **webpack-cli**, you can now run
-
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+This project has been created as part of the Odin Project curriculum.
