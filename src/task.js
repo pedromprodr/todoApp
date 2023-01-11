@@ -15,14 +15,21 @@ class Task {
     }
     
   }
-  function compare( a, b ) {
-    if ( a.priority === 'urgent' && b.priority === 'normal' ){
-      return -1;
+
+  function compare(taskA, taskB) {
+    if (taskA.isComplete && !taskB.isComplete) {
+        return 1;
+    } else if (!taskA.isComplete && taskB.isComplete) {
+        return -1;
+    } else {
+        if (taskA.priority==='urgent' && taskB.priority==='normal') {
+            return -1;
+        } else if (taskA.priority==='normal' && taskB.priority==='urgent') {
+            return 1;
+        } else {
+            return 0;
+        }
     }
-    if ( a.priority === 'normal' && b.priority === 'urgent' ){
-      return 1;
-    }
-    return 0;
-  }
+}
   export { Task , compare };
   

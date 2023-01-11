@@ -41,51 +41,73 @@ function loadHeader() {
   header.appendChild(projectNav);
   document.getElementById("content").appendChild(header);
 }
+
 function loadNewProjectButton() {
+  //NAB-BAR ENTRY TO CREATE NEW PROJECT
   const newProject = document.createElement("div");
   newProject.classList.add("newProject", "projectTitle");
   newProject.textContent = "[+]";
-
+  //OPEN THE FORM
   newProject.addEventListener("click", function () {
-    formContainer.style.display = "block";
+    document.getElementById('form-container').style.display = "block";
   });
 
+  return newProject;
+}
+
+function loadProjectForm() {
+  //FORM CREATION
   var formContainer = document.createElement("div");
   formContainer.setAttribute("id", "form-container");
   formContainer.style.display = "none";
 
   var form = document.createElement("form");
+  form.classList.add('form');
 
+  //Name of the project label
   var nameLabel = document.createElement("label");
   nameLabel.setAttribute("for", "name");
-  nameLabel.innerHTML = "Name of the project:";
+  nameLabel.innerHTML = "Name of the project:   ";
+  nameLabel.classList.add('nameLabel');
+  form.appendChild(nameLabel);
+
+  //User input of the name of the new project
   var nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("id", "name");
   nameInput.setAttribute("name", "name");
+  nameInput.classList.add('nameInput');
   form.appendChild(nameInput);
 
+  //Submit form button
   var submitButton = document.createElement("button");
   submitButton.setAttribute("type", "submit");
   submitButton.innerHTML = "Submit";
+  submitButton.classList.add('submitButton','cute-button');
   form.appendChild(submitButton);
 
-  formContainer.appendChild(form);
-
-  form.appendChild(nameLabel);
-
+  //Creation of the form button
   var closeFormButton = document.createElement("button");
   closeFormButton.setAttribute("id", "close-form");
   closeFormButton.innerHTML = "Close";
+  closeFormButton.classList.add("closeFormButton",'cute-button');
   closeFormButton.addEventListener("click", function () {
     formContainer.style.display = "none";
   });
-  formContainer.appendChild(closeFormButton);
+
+  form.appendChild(closeFormButton);
+
+  formContainer.appendChild(form);
+
+  //Append the form-container to the content div
   document.getElementById("content").appendChild(formContainer);
-  return newProject;
+
 }
+
 function loadDOM() {
   loadSampleProjects();
+  
+  loadProjectForm();
 
   loadHeader();
 
@@ -153,6 +175,7 @@ function loadAllTasks() {
     projectContainer.appendChild(taskElement);
   });
 }
+
 function loadProject(title) {
   let projectContainer = document.getElementsByClassName("projectContainer")[0];
   projectContainer.innerHTML = "";

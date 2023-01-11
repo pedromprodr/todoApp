@@ -8,11 +8,11 @@ body{
     max-height: 100%;
     font-family: 'Open Sans', sans-serif;
     margin: 0;
-    background-color: #2E3136;
+    background-color:  #f9f9f9;
 }
 
 .header{
-    background-color: #282B30;
+    background-color:  #0079bf;
     gap: 30px;
     padding: 1rem;
     display: flex;
@@ -25,7 +25,7 @@ body{
     display: flex;
     flex-direction: row-reverse;
     gap: 20px;
-    color: #43B581;
+    color: #f9f9f9;
     align-items: center;
     cursor: pointer;
 }
@@ -34,7 +34,7 @@ body{
 }
 .logo{
     width: 20vw;
-    color: #43B581;
+    color: #f9f9f9;
     height: 5vh;
     display: flex;
     flex-direction: column;
@@ -69,13 +69,14 @@ li{
     flex-direction: column;
     justify-content: space-between;
     margin: 15px;
-    background-color: #FFFFFF;
+    background-color: #ffa94d;
+    color: #333333;
     min-height: 100px;
     max-height: 100px;
     min-width: 90%;
     max-width: 90%;
     border-radius: 5px;
-    box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0px 0px 10px #ccc;;
 }
 .taskName{
     font-size: 1.15rem;
@@ -87,19 +88,80 @@ li{
 }
 .completedTask{
     text-decoration:line-through;
+    background-color: #97c894;
+}
+.form{
+    display:grid;
+    grid-template-columns: 4fr 1fr 4fr 1fr 2fr;
+    grid-template-rows: 1fr 3fr 1fr;
+}
+.nameLabel{
+    grid-row: 1/2;
+}
+.nameInput{
+    grid-column: 3/4;
+}
+.submitButton{
+    grid-column: 5/6;
+}
+.closeFormButton{
+    grid-column: 5/6;
+    grid-row: 3/4;
 }
 #form-container {
-    display: none; /* Initially hidden */
+    display: none; 
     position: fixed; /* Position in the center of the screen */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
+    width: 500px;
+    height: 100px;
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 10px;
     padding: 20px;
   }
+
+  #form-container[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/* Button Style */
+.cute-button {
+    background-color: #00b0ff; /* color from the palette */
+    color: #fff; /* white text color */
+    border-radius: 50px; /* rounded corners */
+    padding: 10px 20px; /* button padding */
+    font-size: 16px; /* button text size */
+    font-weight: bold; /* bold text */
+    text-transform: uppercase; /* uppercase text */
+    box-shadow: 2px 2px 5px #333333; /* button shadow */
+    transition: all 0.2s ease-in-out; /* animation */
+    cursor: pointer; /* cursor style */
+}
+
+/* Hover Effect */
+.cute-button:hover {
+    background-color: #0079bf; /* color from the palette */
+    transform: scale(1.1); /* scale up the button on hover */
+}
+/* Form Submit Button */
+#form-container input[type="submit"] {
+    width: 100%;
+    background-color: #0079bf;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 800px)  {
     .logo{
-        color: #43B581;
+        color: #333333;
         height: 50px;
         display: flex;
         width: 100%;
@@ -132,7 +194,7 @@ li{
         display: flex;
         flex-direction: column;
         gap: 10px;
-        color: #43B581;
+        color: #0079bf;
         align-items: center;
         cursor: pointer;
     }
