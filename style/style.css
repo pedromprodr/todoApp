@@ -1,26 +1,28 @@
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
 
-body{
+body {
     max-width: 100%;
     font-size: 100%;
     max-height: 100%;
     margin: 0;
-    background-color:  #f9f9f9;
+    background-color: #f9f9f9;
 }
 
-.header{
-    background-color:  #0079bf;
+.header {
+    background-color: #0079bf;
     gap: 30px;
     padding: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-right: 13%;
-    box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0px 10px 10px #ccc;
+    ;
 }
-.projectNav{
+
+.projectNav {
     display: flex;
     flex-direction: row-reverse;
     gap: 20px;
@@ -28,10 +30,12 @@ body{
     align-items: center;
     cursor: pointer;
 }
-.active{
+
+.active {
     font-weight: bold;
 }
-.logo{
+
+.logo {
     width: 20vw;
     color: #f9f9f9;
     height: 5vh;
@@ -40,15 +44,18 @@ body{
     justify-content: center;
     align-items: center;
 }
-.title{
+
+.title {
     font-size: 26px;
     font-weight: bold;
 }
-.subtitle{
+
+.subtitle {
     font-size: 12.5px;
-    font-weight:lighter;
+    font-weight: lighter;
 }
-.projectContainer{
+
+.projectContainer {
     align-items: center;
     margin: 20px;
     max-width: 100%;
@@ -58,11 +65,13 @@ body{
     align-content: center;
     gap: 1%;
 }
-li{
+
+li {
     text-decoration: none;
     list-style: none;
 }
-.task{
+
+.task {
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -75,66 +84,79 @@ li{
     min-width: 90%;
     max-width: 90%;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px #ccc;;
+    box-shadow: 0px 0px 10px #ccc;
 }
-.urgentTask{
+
+.urgentTask {
     background-color: #002d7a;
     color: azure;
 }
-.taskName{
+
+.taskName {
     font-size: 1.15rem;
     font-weight: bold;
 }
-.taskName{
+
+.taskName {
     font-size: 1.15rem;
     font-weight: bold;
 }
-.completedTask{
-    text-decoration:line-through;
-    color:black;
+
+.completedTask {
+    text-decoration: line-through;
+    color: black;
     background-color: #97c894;
 }
-.formP{
-    display:grid;
-    grid-column: 1/6;
-    grid-row: 1/4;
-    grid-template-columns: 2fr 1fr 2fr;
-    gap:10px;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-}
-.nameLabel{
+
+
+
+.nameLabelP {
     grid-column: 2/3;
     grid-row: 2/3;
     text-align: center;
     font-weight: bold;
 }
-.nameInput{
+
+.nameInputP {
     grid-column: 2/3;
     grid-row: 3/4;
 }
-.submitButton{
+
+.submitButtonP {
     grid-column: 2/3;
     grid-row: 4/5;
 }
-.closeFormButton{
+
+.closeFormButtonP {
     grid-column: 5/6;
     grid-row: 1/2;
     color: #aaa;
     background: none;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-#form-container {
-    display: none; 
+
+.formP {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 1/4;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 10px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+#form-containerP {
+    display: none;
     position: fixed;
     grid-template-columns: 4fr 1fr 4fr 1fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr;/* Position in the center of the screen */
+    grid-template-rows: 1fr 1fr 1fr;
+    /* Position in the center of the screen */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -144,36 +166,17 @@ li{
     box-shadow: 0px 0px 10px #ccc;
     border-radius: 10px;
     padding: 20px;
-  }
+}
 
-  #form-container[type="text"] {
+#form-containerP[type="text"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
     border: 5px solid rgb(13, 13, 13);
     border-radius: 4px;
 }
-/* Button Style */
-.cute-button {
-    background-color: #00b0ff; /* color from the palette */
-    color: #fff; /* white text color */
-    border:0;
-    border-radius: 30px; /* rounded corners */
-    padding: 6px 15px; /* button padding */
-    font-size: 13px; /* button text size */
-    font-weight: bold; /* bold text */
-    text-transform: uppercase; /* uppercase text */
-    box-shadow: 2px 2px 5px #333333; /* button shadow */
-    transition: all 0.2s ease-in-out; /* animation */
-    cursor: pointer; /* cursor style */
-}
 
-/* Hover Effect */
-.cute-button:hover {
-    background-color: #0079bf; /* color from the palette */
-}
-/* Form Submit Button */
-#form-container input[type="submit"] {
+#form-containerP input[type="submit"] {
     width: 100%;
     background-color: #0079bf;
     color: #fff;
@@ -183,43 +186,208 @@ li{
     cursor: pointer;
 }
 
-@media only screen and (max-width: 800px)  {
-    .logo{
-        color: #333333;
+.formT {
+    display: grid;
+    grid-row: 1/11;
+    grid-row: 1/4;
+    gap: 10px;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+#form-containerT {
+    display: none;
+    position: fixed;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* Position in the center of the screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(245, 245, 245);
+    width: 200px;
+    height: 300px;
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#form-containerT[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 5px solid rgb(13, 13, 13);
+    border-radius: 4px;
+}
+
+#form-containerT input[type="submit"] {
+    width: 100%;
+    background-color: #0079bf;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.nameLabelT {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+.nameInputT {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+.descLabelT {
+    grid-column: 2/3;
+    grid-row: 4/5;
+}
+.descInputT {
+    grid-column: 2/3;
+    grid-row: 5/6;
+}
+.dateLabelT {
+    grid-column: 2/3;
+    grid-row: 6/7;
+}
+.dateInputT {
+    grid-column: 2/3;
+    grid-row: 7/8;
+}
+.priorityLabelT {
+    grid-column: 2/3;
+    grid-row: 8/9;
+}
+.priorityInputT {
+    grid-column: 2/3;
+    grid-row: 9/10;
+}
+.submitButtonT {
+    grid-column: 2/3;
+    grid-row: 10/11;
+}
+.closeFormButtonT {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    color: #aaa;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+/* Button Style */
+.cute-button {
+    background-color: #00b0ff;
+    /* color from the palette */
+    color: #fff;
+    /* white text color */
+    border: 0;
+    border-radius: 30px;
+    /* rounded corners */
+    padding: 6px 15px;
+    /* button padding */
+    font-size: 13px;
+    /* button text size */
+    font-weight: bold;
+    /* bold text */
+    text-transform: uppercase;
+    /* uppercase text */
+    box-shadow: 2px 2px 5px #333333;
+    /* button shadow */
+    transition: all 0.2s ease-in-out;
+    /* animation */
+    cursor: pointer;
+    /* cursor style */
+}
+
+.buttonContainer {
+    display: flex;
+    margin: 30px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.utility-button {
+    background-color: #0079bf;
+    color: #fff;
+    border: 0;
+    border-radius: 30px;
+    /* rounded corners */
+    padding: 6px 15px;
+    /* button padding */
+    font-size: 13px;
+    /* button text size */
+    font-weight: bold;
+    /* bold text */
+    text-transform: uppercase;
+    /* uppercase text */
+    box-shadow: 2px 2px 5px #aaa;
+    /* button shadow */
+    transition: all 0.2s ease-in-out;
+    /* animation */
+    cursor: pointer;
+    /* cursor style */
+}
+
+.utility-button:hover {
+    background-color: #002d7a;
+    /* color from the palette */
+}
+
+.cute-button:hover {
+    background-color: #0079bf;
+    /* color from the palette */
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    .logo {
+        color: #f9f9f9;
         height: 50px;
         display: flex;
         width: 100%;
         flex-direction: column;
     }
-    .title{
+
+    .title {
         font-size: 20px;
 
         font-weight: bold;
     }
-    .subtitle{
+
+    .subtitle {
         font-size: 9px;
-        font-weight:lighter;
+        font-weight: lighter;
     }
-    .header{
+
+    .header {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
     }
-    .projectContainer{
+
+    .projectContainer {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
     }
-    .projectNav{
+
+    .projectNav {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        color: #0079bf;
+        color: #f9f9f9;
         align-items: center;
         cursor: pointer;
     }
-  }
+}
