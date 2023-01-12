@@ -1,12 +1,11 @@
 *{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
     max-width: 100%;
     font-size: 100%;
     max-height: 100%;
-    font-family: 'Open Sans', sans-serif;
     margin: 0;
     background-color:  #f9f9f9;
 }
@@ -69,7 +68,7 @@ li{
     flex-direction: column;
     justify-content: space-between;
     margin: 15px;
-    background-color: #ffa94d;
+    background-color: #73d3ff;
     color: #333333;
     min-height: 100px;
     max-height: 100px;
@@ -77,6 +76,10 @@ li{
     max-width: 90%;
     border-radius: 5px;
     box-shadow: 0px 0px 10px #ccc;;
+}
+.urgentTask{
+    background-color: #002d7a;
+    color: azure;
 }
 .taskName{
     font-size: 1.15rem;
@@ -88,35 +91,56 @@ li{
 }
 .completedTask{
     text-decoration:line-through;
+    color:black;
     background-color: #97c894;
 }
-.form{
+.formP{
     display:grid;
-    grid-template-columns: 4fr 1fr 4fr 1fr 2fr;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-column: 1/6;
+    grid-row: 1/4;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap:10px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 .nameLabel{
-    grid-row: 1/2;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    text-align: center;
+    font-weight: bold;
 }
 .nameInput{
-    grid-column: 3/4;
+    grid-column: 2/3;
+    grid-row: 3/4;
 }
 .submitButton{
-    grid-column: 5/6;
+    grid-column: 2/3;
+    grid-row: 4/5;
 }
 .closeFormButton{
     grid-column: 5/6;
-    grid-row: 3/4;
+    grid-row: 1/2;
+    color: #aaa;
+    background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 #form-container {
     display: none; 
-    position: fixed; /* Position in the center of the screen */
+    position: fixed;
+    grid-template-columns: 4fr 1fr 4fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;/* Position in the center of the screen */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    width: 500px;
-    height: 100px;
+    background: rgb(245, 245, 245);
+    width: 300px;
+    height: 130px;
     box-shadow: 0px 0px 10px #ccc;
     border-radius: 10px;
     padding: 20px;
@@ -126,16 +150,17 @@ li{
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 5px solid rgb(13, 13, 13);
     border-radius: 4px;
 }
 /* Button Style */
 .cute-button {
     background-color: #00b0ff; /* color from the palette */
     color: #fff; /* white text color */
-    border-radius: 50px; /* rounded corners */
-    padding: 10px 20px; /* button padding */
-    font-size: 16px; /* button text size */
+    border:0;
+    border-radius: 30px; /* rounded corners */
+    padding: 6px 15px; /* button padding */
+    font-size: 13px; /* button text size */
     font-weight: bold; /* bold text */
     text-transform: uppercase; /* uppercase text */
     box-shadow: 2px 2px 5px #333333; /* button shadow */
@@ -146,7 +171,6 @@ li{
 /* Hover Effect */
 .cute-button:hover {
     background-color: #0079bf; /* color from the palette */
-    transform: scale(1.1); /* scale up the button on hover */
 }
 /* Form Submit Button */
 #form-container input[type="submit"] {

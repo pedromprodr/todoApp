@@ -11,7 +11,7 @@ class Task {
     }
     
     markAsComplete() {
-      this.isComplete = true;
+      this.isComplete = !this.isComplete;
     }
     
   }
