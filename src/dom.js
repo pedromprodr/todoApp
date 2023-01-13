@@ -1,7 +1,7 @@
 import { Project } from "./project.js";
 import { Task, compare } from "./task.js";
 
-const projects = [];
+let projects = [];
 let currProjPos = -1;
 
 function loadHeader() {
@@ -143,7 +143,7 @@ function loadTaskForm() {
   dateLabel.classList.add("dateLabelT");
 
   var dateInput = document.createElement("input");
-  dateInput.setAttribute("type", "text");
+  dateInput.setAttribute("type", "date");
   dateInput.classList.add("dateInputT");
 
   form.appendChild(dateLabel);
@@ -184,6 +184,9 @@ function loadTaskForm() {
       projects[currProjPos].tasks.push(newTask);
       loadProject(projects[currProjPos].name);
     }
+    else {
+      alert("Can't create a task in All Tasks. Please select a project in order to create a task.")
+    }
     formContainer.style.display = "none";
   });
 
@@ -208,7 +211,6 @@ function loadTaskForm() {
 }
 
 function createNav() {
-  console.log("A");
   const projectNav = document.createElement("div");
   projectNav.classList.add("projectNav");
 
@@ -227,6 +229,10 @@ function createNav() {
   });
   projectNav.appendChild(loadNewProjectButton());
   return projectNav;
+}
+
+function name(params) {
+  
 }
 
 function loadDOM() {
@@ -407,15 +413,32 @@ function loadUtilityButtons() {
   clearCompleted.addEventListener('click', () => {
     clearForm();
     deleteCompletedTasks();
-    if(currProjPos == -1) loadAllTasks();
-    else if(currProjPos>=0)loadProject(projects[currProjPos].name)
+    if (currProjPos == -1) loadAllTasks();
+    else if (currProjPos >= 0) loadProject(projects[currProjPos].name)
   })
+
 
   const deleteProject = document.createElement("button");
   //submitButton.setAttribute("type", "submit");
   deleteProject.innerHTML = "Delete Project";
   deleteProject.classList.add("deleteProjectButton", "utility-button");
-
+  deleteProject.addEventListener('click', () => {
+    clearForm();
+    if (currProjPos == -1) alert("Can't delete All Tasks. Please select a project in order to delete it.");
+    else if (currProjPos >= 0) {
+      var userInput = prompt("Are you sure you want to delete this project? Please type 'yes' or 'no'");
+      if (userInput.toUpperCase() === 'YES') {
+        console.log("deleting"+currProjPos);
+        console.log(projects);
+        deleteProjectFunction(projects[currProjPos].name);
+        loadAllTasks();
+        document.querySelector(".header").removeChild(document.querySelector(".projectNav"));
+        document.querySelector(".header").appendChild(createNav());
+      } else {
+        console.log("Deletion Cancelled");
+      }
+    }
+  })
 
 
   buttonContainer.appendChild(createTask);
@@ -466,9 +489,15 @@ function loadSampleProjects() {
 function deleteCompletedTasks() {
   projects.forEach((project) => {
     project.tasks = project.tasks.filter(item => !item.isComplete);
-    console.log('febre pagã');
   });
 }
+
+function deleteProjectFunction(name) {
+  projects = projects.filter(item => item.name !== name);
+  console.log(projects);
+}
+
+
 function clearForm() {
   document.getElementById("form-containerP").style.display = "none";
   document.getElementById("form-containerT").style.display = "none";
