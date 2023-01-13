@@ -81,6 +81,7 @@ function loadProjectForm() {
     document.getElementsByClassName("header")[0].removeChild(document.getElementsByClassName("projectNav")[0]);
     document.getElementsByClassName("header")[0].appendChild(createNav());
     formContainer.style.display = "none";
+    loadProject(project.name);
   });
 
 
@@ -231,15 +232,37 @@ function createNav() {
   return projectNav;
 }
 
-function name(params) {
-  
+function unpackProjects(fileToUnpack) {
+  let newProjectArray = [];
+  fileToUnpack.projects.forEach(p => {
+    let nP = new Project(p.name);
+    p.tasks.forEach( t =>{
+      let nT = new Task(t.name, t.date, t.description, t.dueDate,t.priority,t.isComplete);
+      nP.tasks.push(nT);
+    })
+    newProjectArray.push(nP);
+  });
+  return newProjectArray;
 }
 
 function loadDOM() {
 
-  loadSampleProjects();
+  // Get the string from local storage
+  let dataString = localStorage.getItem('projectsData');
+
+  // Parse the string to an object
+  let data = JSON.parse(dataString);
+
+  console.log(data);
+  // Assign the projects to the projects variable
+  if (data != null) {
+    projects = unpackProjects(data);
+  }
+
+  if (projects.length == 0) loadSampleProjects();
 
   loadProjectForm();
+  console.log(projects);
 
   loadTaskForm();
 
@@ -320,6 +343,10 @@ function loadAllTasks() {
 
     projectContainer.appendChild(taskElement);
   });
+
+  let dataString = JSON.stringify({ projects: projects });
+
+  localStorage.setItem('projectsData', dataString);
 }
 
 function loadProject(title) {
@@ -391,6 +418,10 @@ function loadProject(title) {
       });
     }
   });
+
+  let dataString = JSON.stringify({ projects: projects });
+
+  localStorage.setItem('projectsData', dataString);
 }
 
 function loadUtilityButtons() {
@@ -428,12 +459,12 @@ function loadUtilityButtons() {
     else if (currProjPos >= 0) {
       var userInput = prompt("Are you sure you want to delete this project? Please type 'yes' or 'no'");
       if (userInput.toUpperCase() === 'YES') {
-        console.log("deleting"+currProjPos);
+        console.log("deleting" + currProjPos);
         console.log(projects);
         deleteProjectFunction(projects[currProjPos].name);
-        loadAllTasks();
         document.querySelector(".header").removeChild(document.querySelector(".projectNav"));
         document.querySelector(".header").appendChild(createNav());
+        loadAllTasks();
       } else {
         console.log("Deletion Cancelled");
       }
@@ -449,7 +480,7 @@ function loadUtilityButtons() {
 }
 
 function loadSampleProjects() {
-
+  projects = [];
   let project = new Project("Household tasks");
 
   let task1 = new Task(
@@ -457,31 +488,34 @@ function loadSampleProjects() {
     "",
     "Go to the kitchen and do the dishes, you lazy bastard",
     "12/01/2022",
-    "urgent"
+    "urgent",
+    false
   );
   let task2 = new Task(
     "Cook Dinner for Sam",
     "",
     "Cook pasta for Sam before his practice",
     "09/01/2022",
-    "normal"
+    "normal",
+    false
   );
   let task3 = new Task(
     "Buy groceries",
     "",
     "Go to the supermarket",
     "10/01/2022",
-    "urgent"
+    "urgent",
+    false
   );
 
   project.tasks.push(task1, task2, task3);
   projects.push(project);
 
   project = new Project("Groceries");
-  task1 = new Task("Buy Milk", "", "", "09/01/2022", "urgent");
+  task1 = new Task("Buy Milk", "", "", "09/01/2022", "urgent",false);
   task1.markAsComplete();
-  task2 = new Task("Buy toilet paper", "", "", "09/01/2022", "normal");
-  task3 = new Task("Buy cleaning products", "", "", "09/01/2022", "normal");
+  task2 = new Task("Buy toilet paper", "", "", "09/01/2022", "normal",false);
+  task3 = new Task("Buy cleaning products", "", "", "09/01/2022", "normal",false);
   project.tasks.push(task1, task2, task3);
   projects.push(project);
 }

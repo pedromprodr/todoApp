@@ -1,13 +1,13 @@
 import { property } from "lodash";
 
 class Task {
-    constructor(name, date, description, dueDate, priority) {
+    constructor(name, date, description, dueDate, priority,isComplete) {
       this.name = name;
       this.date = date;
       this.description=description;
       this.dueDate = dueDate;
       this.priority=priority;
-      this.isComplete = false;
+      this.isComplete = isComplete;
     }
     
     markAsComplete() {
