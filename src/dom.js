@@ -244,7 +244,7 @@ function loadDOM() {
   const projectContainer = document.createElement("div");
   projectContainer.className = "projectContainer";
   document.getElementById("content").appendChild(projectContainer);
-  
+
   loadAllTasks();
 
   //loadProject(projects[0].name);
@@ -404,6 +404,12 @@ function loadUtilityButtons() {
   //submitButton.setAttribute("type", "submit");
   clearCompleted.innerHTML = "Clear Completed Tasks";
   clearCompleted.classList.add("clearCompleted", "utility-button");
+  clearCompleted.addEventListener('click', () => {
+    clearForm();
+    deleteCompletedTasks();
+    if(currProjPos == -1) loadAllTasks();
+    else if(currProjPos>=0)loadProject(projects[currProjPos].name)
+  })
 
   const deleteProject = document.createElement("button");
   //submitButton.setAttribute("type", "submit");
@@ -457,6 +463,12 @@ function loadSampleProjects() {
   projects.push(project);
 }
 
+function deleteCompletedTasks() {
+  projects.forEach((project) => {
+    project.tasks = project.tasks.filter(item => !item.isComplete);
+    console.log('febre pagã');
+  });
+}
 function clearForm() {
   document.getElementById("form-containerP").style.display = "none";
   document.getElementById("form-containerT").style.display = "none";
